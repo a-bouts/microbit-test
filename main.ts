@@ -1,5 +1,10 @@
 input.onButtonPressed(Button.A, function () {
     sing = 1 - sing
+    if (sing == 1) {
+        music.startMelody(music.builtInMelody(Melodies.Birthday), MelodyOptions.Forever)
+    } else {
+        music.stopAllSounds()
+    }
 })
 input.onButtonPressed(Button.B, function () {
     danse = 1 - danse
@@ -17,11 +22,5 @@ basic.forever(function () {
         RingbitCar.freestyle(left, right)
     } else {
         RingbitCar.freestyle(0, 0)
-    }
-})
-basic.forever(function () {
-    if (sing == 1) {
-        music.startMelody(music.builtInMelody(Melodies.Funk), MelodyOptions.Once)
-        basic.pause(100)
     }
 })
