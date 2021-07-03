@@ -1,0 +1,27 @@
+input.onButtonPressed(Button.A, function () {
+    sing = 1 - sing
+})
+input.onButtonPressed(Button.B, function () {
+    danse = 1 - danse
+})
+let right = 0
+let left = 0
+let danse = 0
+let sing = 0
+RingbitCar.init_wheel(AnalogPin.P1, AnalogPin.P2)
+basic.forever(function () {
+    if (danse == 1) {
+        left = randint(-100, 100)
+        right = randint(-100, 100)
+        basic.pause(1000)
+        RingbitCar.freestyle(left, right)
+    } else {
+        RingbitCar.freestyle(0, 0)
+    }
+})
+basic.forever(function () {
+    if (sing == 1) {
+        music.startMelody(music.builtInMelody(Melodies.Funk), MelodyOptions.Once)
+        basic.pause(100)
+    }
+})
